@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio>
 
 /**
  * print_to_98 - print numbers n to 98
