@@ -1,6 +1,7 @@
 #include "main.h"
+
 /**
- * jack_bauer - that prints every minute of the day of jack bauer
+ * jack_bauer - that prints every minute of the day of jack bauer.
  * Return: the value of the last digit.
  */
 void jack_bauer(void)
