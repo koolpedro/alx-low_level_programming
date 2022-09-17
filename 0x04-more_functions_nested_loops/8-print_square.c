@@ -3,22 +3,29 @@
 
 /**
  * print_square - prints a square
- * @size: is the size of the square
- * Return: Always 0 (success)
+ * @size: parameter
+ * Return: returns nothing
  */
+
 void print_square(int size)
 {
-	int i, j;
-	if (size <= 0)
+	int inc1, inc2;
+
+	if (size > 0)
 	{
-		_putchar('\n');
-	}
-	for (i =  1; i <= size; i++)
-	{
-		for j = 1; j <= size; j++)
+		for (inc1 = 0; inc1 < size; inc1++)
 		{
+			for (inc2 = 0; inc2 < (size - 1); inc2++)
+			{
+				_putchar('#');
+			}
+
 			_putchar('#');
+			_putchar('\n');
 		}
+	}
+	else
+	{
 		_putchar('\n');
 	}
 }
