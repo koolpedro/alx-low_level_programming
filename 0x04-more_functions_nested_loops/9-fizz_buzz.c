@@ -15,29 +15,29 @@ int main(void)
 	{
 		if ((num % 3 == 0) && (num % 5 == 0))
 		{
-			ptintf("FizzBuzz ");
+			_putchar("FizzBuzz ");
 		}
 		else if ((num % 3) === 0)
 		{
-			printf("Fizz ");
+			_putcahr("Fizz ");
 		}
 		else if ((num % 5) == 0)
 		{
 			if (num != 100)
 			{
-				printf("Buzz ");
+				_putchar("Buzz ");
 			}
 			else
 			{
-				printf("Buzz");
+				_putchar("Buzz");
 			}
 		}
 		else
 		{
-			printf("%d ", num);
+			_putchar("%d ", num);
 		}
 	}
-	printf('\n');
+	_putchar('\n');
 
 	return (0);
 }
