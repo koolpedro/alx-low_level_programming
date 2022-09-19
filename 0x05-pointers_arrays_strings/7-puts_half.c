@@ -6,7 +6,7 @@
  *
  * Return: void
  */
-void puts_half(char *str)
+void puts_half (char *str)
 {
 	int j, i = 0;
 
@@ -20,5 +20,5 @@ void puts_half(char *str)
 		putchar(*(str + j));
 		j++;
 	}
-	_putchar('\n');
+	putchar('\n');
 }
