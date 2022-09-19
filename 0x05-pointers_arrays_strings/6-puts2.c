@@ -1,13 +1,12 @@
 #include "main.h"
 
 /**
- * puts2 - print string twice
+ * puts2 - print every character of a string to stdout
  *
- * @str: string to put twice
+ * @str: string to print
  *
- * Return: nothing
+ * Return: void
  */
-
 void puts2(char *str)
 {
 	int i = 0;
