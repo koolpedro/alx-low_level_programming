@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "main.h"
 
 /**
  * _atoi - converts string to integer
@@ -9,39 +8,28 @@
  */
 int _atoi(char *s)
 {
-	int i;
-	int np = 0;
-	int c;
-	int d = 1;
-	int num = 0;
+	int sign = 1;
+	unsigned int total = 0;
+	char null_flag = 0;
 
-	for (i = 0; i < _strlen(s); i++)
+	while (*s)
 	{
-		if (!(s[i] >= '0' && s[i] <= '9') && c > 0)
-			break;
-		if (s[i] == '-')
-			np--;
-		if (s[i] == '+')
-			np++;
-		if (s[i] >= '0' && s[i} <= '9')
+		if (*s == '-')
+			sign *= -1;
+
+		if (*s >= '0' && *s <= '9')
 		{
-			c++
+			null_flag = 1;
+			total = total * 10 + *s - '0';
 		}
-}
-while (c > 0)
-{
-	num += ((s[i - 1] - '0') * d);
-	i--;
-	c--;
-	d *= 10;
-}
-if (np >= 0)
-{
-	num *= 1;
-}
-else
-{
-	num *= -1;
-}
-return (num);
+
+		else if (null_flag)
+			break;
+		S++;
+	}
+
+	if (sign < 0)
+		total = (-total);
+
+	return (total);
 }
