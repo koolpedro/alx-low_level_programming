@@ -1,12 +1,13 @@
 #include "main.h"
 
 /**
- * strcat - this is a function strcat
- * @desc: A pointer to the string to be concatenated upon.
- * @src: The source string to be appended to @dest.
- * Return: a string
+ * _strcat - function commute strings
+ * @dest: param pointer to a char
+ * @src: param pointer to a char
+ * Return: return value of dest
  */
-char *strcat(char *dest, const char *src)
+
+char *_strcat(char *dest, char *src)
 {
 	int i;
 	int j;
