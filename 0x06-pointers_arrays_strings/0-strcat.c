@@ -2,8 +2,8 @@
 
 /**
  * strcat - this is a function strcat
- * @desc: first param
- * @src: second param
+ * @desc: A pointer to the string to be concatenated upon.
+ * @src: The source string to be appended to @dest.
  * Return: a string
  */
 char *strcat(char *dest, const char *src)
