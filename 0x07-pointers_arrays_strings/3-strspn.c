@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio>
 
 /**
  * _strspn - Gets the lenght of a prefix substring.
@@ -6,7 +7,7 @@
  * @accept: The prefix to be measured.
  *
  * Rteurn: The number of bytes in s which
- *	 consist only of bytes from accept.
+ * consist only of bytes from accept.
  */
 unsigned int _strspn(char *s, char *accept)
 {
