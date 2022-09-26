@@ -6,7 +6,7 @@
  * @s: Apointer to the memory area to be filled.
  * @c: the character to fill the memory arae with.
  * @n: the number of bytes to be filled.
- * description _memset: over there
+ * description_memset: over there
  *
  * Return: A pointer to the filled memory area @s.
  *
