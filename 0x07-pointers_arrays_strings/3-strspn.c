@@ -1,18 +1,34 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * main - check the code for Alx.
+ * _strspn - Gets the lenght of a prefix substring.
+ * @s: The string to be searched.
+ * @accept: The prefix to be measured.
  *
- * Return: Always 0.
+ * Rteurn: The number of bytes in s which
+ *	 consist only of bytes from accept.
  */
-int main(void)
+unsigned int _strspn(char *s, char *accept)
 {
-	char *s = "hello, world";
-	char *f = "oleh";
-	unsigned int n;
+	unsigned int bytes = 0;
+	int index;
 
-	n = _strspn(s, f);
-	printf("%u\n", n);
-	return (0);
+	 while (*s)
+	 {
+		  for (index = 0; accept[index]; index++)
+		  {
+			  if (*s == accept[index])
+			  {
+				  bytes++;
+				  break;
+			  }
+
+			  else if (accept[index + 1] == '\0')
+				  return (bytes);
+		  }
+
+		  s++;
+	 }
+
+	 return (bytes);
 }
