@@ -4,7 +4,7 @@
  * @s: string to count
  * Return: lenght of string
  */
-int_strlen_recursion(char *s)
+int _strlen_recursion(char *s)
 {
 	int n = 0;
 
