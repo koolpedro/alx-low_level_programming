@@ -25,7 +25,7 @@ int helper(int i, int n)
  * @n: integer to return
  * Return: returns int of squareroot
  */
-int _sqrt_recusion(int n)
+int _sqrt_recursion(int n)
 {
 	int i = 0;
 
