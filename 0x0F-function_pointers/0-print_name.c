@@ -1,13 +1,12 @@
-#include "function_pointers.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include "function_pointers.h"
 
 /**
- * print_name - writes the character c to stdout
- * @name: String
- * @f: Pointer to function with char parameter and no return
- *
- * Return: Nothing
+ * print_name - that prints a name
+ * @name: variable char
+ * @f: pointer a function
+ * Return: nothing
  */
 
 void print_name(char *name, void (*f)(char *))
