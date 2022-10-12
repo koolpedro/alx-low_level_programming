@@ -3,16 +3,14 @@
 #include "function_pointers.h"
 
 /**
- * print_name - that prints a name
- * @name: variable char
- * @f: pointer a function
- * Return:
+ * print_name - writes the character c to stdout
+ * @name: String
+ * @f: Pointer to function with char parameter and no return
+ *
+ * Return: Nothing
  */
-
 void print_name(char *name, void (*f)(char *))
 {
-	if (name == NULL || f == NULL)
-		return;
-
-	f(name);
+	 if (f != 0)
+		 f(name);
 }
