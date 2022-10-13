@@ -3,36 +3,26 @@
 #include "variadic_functions.h"
 
 /**
- * print_numbers - prints numbers
- * @n: variable unsigned int
- * @separator: variable pointer
- *
- * Return: zero
+ * print_numbers - print varying amount of numbers
+ * @separator: delimiter
+ * @n: amount of arguments in list
  */
 
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	va_list numbers;
+	va_list valist;
 	unsigned int i;
-	
-	va_start(numbers, n);
 
-	if (separator == NULL)
-		separator = "";
-
-	for (i = 0; i < n; i++)
+	if (n > 0)
 	{
-		if (i != (n - 1))
+		va_start(valist, n);
+		for (i = 1; i <= n; i++)
 		{
-			printf("%d%s", va_arg(numbers, int), separator);
+			printf("%d", va_arg(valist, int));
+			if (i != n && separator != NULL)
+				printf("%s", separator);
 		}
-		else
-		{
-			printf("%d", va_arg(numbers, int));
-		}
-
+		va_end(valist);
 	}
 	printf("\n");
-	va_end(numbers);
-
 }
