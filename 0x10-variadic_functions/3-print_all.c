@@ -1,91 +1,87 @@
+#include "variadic_functions.h"
 #include <stdarg.h>
 #include <stdio.h>
-#include "variadic_functions.h"
 /**
- * print_c - prints char
- * @a: list to give
- * Return: always 0
- */
-int print_c(va_list a)
-{
-	printf("%c", va_arg(a, int));
-	return (0);
-}
-/**
- * print_i - prints int
- * @a: list to give
- * Return: always 0
- */
-int print_i(va_list a)
-{
-	printf("%d", va_arg(a, int));
-	return (0);
-}
-/**
- * print_f - prints float
- * @a: list to give
- * Return: always 0
- */
-int print_f(va_list a)
-{
-	printf("%f", va_arg(a, double));
-	return (0);
-}
-/**
- * print_s - prints string
- * @a: list to give
- * Return: always 0
- */
-int print_s(va_list a)
-{
-	char *s;
-
-	s = va_arg(a, char *);
-	if (s == NULL)
-	{
-		printf("(nil)");
-		return (0);
-	}
-	printf("%s", s);
-	return (0);
-}
-/**
- * print_all - prints all
- * @format: format string that says arg types
+ * tchar - prints variadic argument char
+ * @list: variadic list
  *
+ * Return: No return
+ */
+void tchar(va_list list)
+{
+	printf("%c", va_arg(list, int));
+}
+/**
+ * tint - prints variadic argument int
+ * @list: variadic list
+ *
+ * Return: No return
+ */
+void tint(va_list list)
+{
+	printf("%i", va_arg(list, int));
+}
+/**
+ * tfloat - prints variadic argument float
+ * @list: variadic list
+ *
+ * Return: No return
+ */
+void tfloat(va_list list)
+{
+	printf("%f", va_arg(list, double));
+}
+/**
+ * tstring - prints variadic argument string
+ * @list: variadic list
+ *
+ * Return: No return
+ */
+void tstring(va_list list)
+{
+	char *tmp;
+
+	tmp = va_arg(list, char *);
+	if (tmp == 0)
+		tmp = "(nil)";
+	printf("%s", tmp);
+}
+/**
+ * print_all - prints anything
+ * @format: list of types of arguments passed to the function
+ * @...: Arguments Variadic
+ *
+ * Return: No return
  */
 void print_all(const char * const format, ...)
 {
-	int i, j;
-	char *sep = "";
-	char *sep2 = ", ";
-	va_list anyArgs;
-	printer ops[] = {
-		{"c", print_c},
-		{"i", print_i},
-		{"s", print_s},
-		{"f", print_f},
-		{NULL, NULL}
-
+	ftype fa[] = {
+		{"c", tchar},
+		{"i", tint},
+		{"f", tfloat},
+		{"s", tstring}
 	};
 
-	va_start(anyArgs, format);
-	i = 0;
-	while (format != NULL && format[i])
+	int l1 = 0, l2 = 0;
+	va_list list;
+	char *comma = "";
+
+	va_start(list, format);
+	while (format && format[l1])
 	{
-		j = 0;
-		while (ops[j].f != NULL)
+		l2 = 0;
+		while (l2 < 4)
 		{
-			if (format[i] == *(ops[j].c))
+			if (format[l1] == fa[l2].tc[0])
 			{
-				printf("%s", sep);
-				ops[j].f(anyArgs);
+				printf("%s", comma);
+				fa[l2].tf(list);
+				comma = ", ";
 			}
-			j++;
+			l2++;
 		}
-		sep = sep2;
-		i++;
+		l1++;
 	}
 	printf("\n");
-	va_end(anyArgs);
+	va_end(list);
 }
