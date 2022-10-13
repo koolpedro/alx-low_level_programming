@@ -1,102 +1,92 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdarg.h>
 #include "variadic_functions.h"
-void print_int(va_list args);
-void print_char(va_list args);
-void print_string(va_list args);
-void print_double(va_list args);
-/**
- * print_int - that prints integers
- * @args: va_list
- */
-void print_int(va_list args)
-{
-	int i;
 
-	i = va_arg(args, int);
-	printf("%d", i);
+/**
+ * print_c - print a char
+ * @c: char to print
+ * 
+ * Return: void
+ */
+void print_c(va_list c)
+{
+	printf("%c", va_arg(c, int));
 }
 
 /**
- * print_char - that prints characters
- * @args: va_list
+ * print_s - prints a string
+ * @s: string to print
+ *
+ * Return: void
  */
-void print_char(va_list args)
+void print_s(va_list s)
 {
-	int c;
+	char *str = va_arg(s, char *);
 
-	c = va_arg(args, int);
-	printf("%c", c);
-}
-
-/**
- * print_string - that prints strings
- * @args: va_list
- */
-void print_string(va_list args)
-{
-	char *str;
-
-	str = va_arg(args, char *);
 	if (str == NULL)
-		printf("(nil)");
-	if (str != NULL)
-		printf("%s", str);
+		str = "(nil)";
+	printf("%s", str);
 }
 
 /**
- * print_double - that prints float
- * @args: va_list
+ * print_i - prints an int
+ * @i: int to print
+ *
+ * Return: void
  */
-void print_double(va_list args)
+void print_i(va_list i)
 {
-	double d;
-
-	d = va_arg(args, double);
-	printf("%f", d);
+	printf("%d", va_arg(i, int));
 }
 
 /**
- * print_all - that prints anything
- * * @format: variable const char *
+ * print_f - prints a float
+ * @f: float to print
+ *
+ * Return: void
+ */
+void print_f(va_list f)
+{
+	printf("%f", va_arg(f, double));
+}
+
+/**
+ * print_all - prints anything
+ * @format: list of argument types passed to the function
+ *
+ * Return: void
  */
 void print_all(const char * const format, ...)
 {
-	va_list args;
-	char *comma = "";
-	char *comma2 = ", ";
-	int x = 0;
+	unsigned int i, j;
+	print_t p[] = {
+		{"c", print_c},
+		{"s", print_s},
+		{"i", print_i},
+		{"f", print_f},
+		{NULL, NULL}
+	};
+	va_list valist;
+	char *separator = "";
 
-	va_start(args, format);
-
-	while (format[x] != '\0')
+	va_start(valist, format);
+	i = 0;
+	while (format && format[i])
 	{
-		printf("%s", comma);
-		switch (format[x])
+		j = 0;
+		while (p[j].t != NULL)
 		{
-			case 'i':
-				print_int(args);
+			if (*(p[j].t) == format[i])
+			{
+				printf("%s", separator);
+				p[j].f(valist);
+				separator = ", ";
 				break;
-			case 'c':
-				print_char(args);
-				break;
-			case 's':
-				print_string(args);
-				break;
-			case 'f':
-				print_double(args);
-				break;
-			case 'e':
-				++x;
-				comma = "";
-				continue;
-			default:
-				break;
+			}
+			j++;
 		}
-		comma = comma2;
-		++x;
+		i++;
 	}
+	va_end(valist);
 	printf("\n");
-	va_end(args);
 }
