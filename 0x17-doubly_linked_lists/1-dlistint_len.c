@@ -1,18 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "lists.h"
+
 /**
- * dlistint_len - show us the number of elements in a DLL
- * @h: a pointer to the head of the DLL
- * Return: the number of elements in a DLL
+ * dlistint_len - that returns the number of elements
+ * @h: variable pointer get list to print
+ * Return: the number of nodes
  */
+
 size_t dlistint_len(const dlistint_t *h)
 {
-	size_t num_of_elements;
+	size_t res = 0;
+	const dlistint_t *i;
 
-	num_of_elements = 0;
-	while (h)
+	for (i = h; i != NULL; i = i->next)
 	{
-		h = h->next;
-		num_of_elements = num_of_elements + 1;
+		res++;
 	}
-	return (num_of_elements);
+	return (res);
 }
+
